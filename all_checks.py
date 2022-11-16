@@ -3,6 +3,7 @@ import os
 import sys
 import shutil
 
+''' This line is for making conflict test ''''
 
 def check_reboot():
     """Return True if the computer has a pending reboot."""
