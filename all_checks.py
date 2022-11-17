@@ -3,7 +3,7 @@ import os
 import sys
 import shutil
 
-''' This line is for making conflict test ''''
+''' This line is for making conflict test '''
 
 def check_reboot():
     """Return True if the computer has a pending reboot."""
@@ -20,14 +20,16 @@ def check_disk_full(disk, min_gb, min_pct):
          return True
      return False
 
+def check_root_full():
+    '''Returns True if the root partition is full, False otherwise.'''
+    return check_disk_full(disk='/', min_gb=2, min_pct=10)
 
 def main():
     if check_reboot():
         print("Pending Reboot.")
         sys.exit(1)
-    if check_disk_full(disk="/",min_gb= 2,min_pct= 10):
-        print("Disk full.")
-        sys.exit(1)
+    if check_root_full():
+        print("Root partition full.")
     print("Everything ok.")
     sys.exit(0)
 
@@ -35,4 +37,3 @@ main()
 
 
 
-main()
